@@ -18,3 +18,7 @@ func (wc WebCrawler) Crawl(root string) interface{} {
 const (
 	WebCrawlerType core.CrawlerType = "web_crawler"
 )
+
+func NewCrawler() core.ICrawler {
+	return WebCrawler{}
+}
