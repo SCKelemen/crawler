@@ -1,0 +1,11 @@
+{
+    "webentries" : [
+        "http://srv-devwiki1/mediawiki/Special:AllPages",
+        "http://srv-devwiki1/mediawiki/Main_Page"        
+    ],
+    "fsentries" : [
+        "\\onbase.net\\shares\\Public\\Research+Compliance\\Compliance Library",
+        "\\onbase.net\\shares\\PublicApps"
+    ]
+
+}
