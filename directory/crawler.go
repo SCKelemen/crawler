@@ -7,12 +7,16 @@ import (
 	"github.com/sckelemen/crawler/core"
 )
 
+// New creates a new DirectoryCrawler
 func New() DirectoryCrawler {
 	file := make(chan string)
 	dir := make(chan string)
 	return DirectoryCrawler{EmitFile: file, EmitDir: dir}
 }
 
+// DirectoryCrawler crawls directories
+// it raises an event, and queues resources
+// Implements the ICrawler IFace
 type DirectoryCrawler struct {
 	files       []string
 	directories []string
@@ -20,15 +24,19 @@ type DirectoryCrawler struct {
 	EmitDir     chan string
 }
 
+// CrawlerType identifies the type of crawler
 func (dc DirectoryCrawler) CrawlerType() core.CrawlerType {
 	return DirectoryCrawlerType
 }
+
+// Crawl crawls the directory
 func (dc DirectoryCrawler) Crawl(root string) interface{} {
 	filepath.Walk(root, dc.visit)
 	return dc
 }
 
 const (
+	// DirectoryCrawlerType identitifoes the type of crawler
 	DirectoryCrawlerType core.CrawlerType = "directory_crawler"
 )
 
@@ -44,6 +52,7 @@ func (dc DirectoryCrawler) visit(path string, info os.FileInfo, err error) error
 	return nil
 }
 
+// NewCrawler creates a new Crawler and returns its interface
 func NewCrawler() core.ICrawler {
 	return DirectoryCrawler{}
 }
