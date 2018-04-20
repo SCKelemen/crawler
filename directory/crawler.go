@@ -7,8 +7,8 @@ import (
 	"github.com/sckelemen/crawler/core"
 )
 
-// New creates a new DirectoryCrawler
-func New() DirectoryCrawler {
+// NewCrawler returns an instance of DirectoryCrawler
+func NewCrawler() DirectoryCrawler {
 	file := make(chan string)
 	dir := make(chan string)
 	return DirectoryCrawler{EmitFile: file, EmitDir: dir}
@@ -50,9 +50,4 @@ func (dc DirectoryCrawler) visit(path string, info os.FileInfo, err error) error
 	}
 	dc.EmitFile <- path
 	return nil
-}
-
-// NewCrawler creates a new Crawler and returns its interface
-func NewCrawler() core.ICrawler {
-	return DirectoryCrawler{}
 }

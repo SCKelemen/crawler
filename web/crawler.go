@@ -27,7 +27,7 @@ const (
 	WebCrawlerType core.CrawlerType = "web_crawler"
 )
 
-// NewCrawler returns the webcrawlers interface
-func NewCrawler() core.ICrawler {
+// NewCrawler returns an instance of WebCrawler
+func NewCrawler() WebCrawler {
 	return WebCrawler{}
 }
